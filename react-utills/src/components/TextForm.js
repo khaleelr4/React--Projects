@@ -1,6 +1,6 @@
 import React , {useState} from 'react'
 
-export default function TextForm(prop) {
+export default function TextForm(props) {
     
     const handleOnChange = (event) =>{
         setText(event.target.value);
@@ -40,9 +40,9 @@ export default function TextForm(prop) {
     return (
         <>
         <div className="container my-2">
-            <h2>{prop.heading}</h2>
+            <h2>{props.heading}</h2>
             <div className="mb-3">
-                <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
+                <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: props.mode==='dark'?'grey':'white',color: props.mode==='dark'?'white':'black'}} id="myBox" rows="8"></textarea>
             </div>
             <button className="btn btn-primary" onClick={handleUpClick}>Uppercase</button>
             <button className="btn btn-primary mx-1" onClick={handleLoClick}>Lowercase</button>
@@ -56,7 +56,7 @@ export default function TextForm(prop) {
             <p>Your Words Are {text.split(" ").length} And Characters Are {text.length}</p>
             <p>Your Reading Time Is {0.0008 * text.split(" ").length}</p>
             <h3>Preview</h3>
-            <p>{text}</p>
+            <p>{text.length>0?text:"Enter Something"}</p>
         </div>
         </>
     )
