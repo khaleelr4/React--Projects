@@ -9,22 +9,26 @@ export default function TextForm(props) {
     const handleUpClick = () =>{
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("Text Converted To Uppercase" , "success")
     }
 
     const handleLoClick = () =>{
         let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert("Text Converted To Lowercase" , "success")
     }
 
     const handleClClick = () =>{
         let newText = '';
         setText(newText);
+        props.showAlert("Textarea Is Cleaned" , "success")
     }
 
     const handleCoClick = () =>{
         var text = document.getElementById("myBox");
         text.select();
         navigator.clipboard.writeText(text.value);
+        props.showAlert("Text Is Copied" , "success")
     }
 
     const handleFuClick = () =>{
@@ -34,6 +38,7 @@ export default function TextForm(props) {
         }
         const newText = arr.join(" ");
         setText(newText);
+        props.showAlert("First Letters Are Capitilized" , "success")
     }
 
     const [text, setText] = useState("");
